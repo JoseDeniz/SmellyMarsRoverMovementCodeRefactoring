@@ -47,11 +47,11 @@ public class Rover {
         }
         int displacement = displacement1;
 
-        if (direction.equals("N")) {
+        if (direction.equals(Direction.NORTH)) {
             y += displacement;
-        } else if (direction.equals("S")) {
+        } else if (direction.equals(Direction.SOUTH)) {
             y -= displacement;
-        } else if (direction.equals("W")) {
+        } else if (direction.equals(Direction.WEST)) {
             x -= displacement;
         } else {
             x += displacement;
@@ -59,29 +59,29 @@ public class Rover {
     }
 
     private void rotate(String command) {
-        if (direction.equals("N")) {
+        if (direction.equals(Direction.NORTH)) {
             if (command.equals("r")) {
                 direction = "E";
             } else {
-                direction = "W";
+                direction = Direction.WEST;
             }
-        } else if (direction.equals("S")) {
+        } else if (direction.equals(Direction.SOUTH)) {
             if (command.equals("r")) {
-                direction = "W";
+                direction = Direction.WEST;
             } else {
                 direction = "E";
             }
-        } else if (direction.equals("W")) {
+        } else if (direction.equals(Direction.WEST)) {
             if (command.equals("r")) {
-                direction = "N";
+                direction = Direction.NORTH;
             } else {
-                direction = "S";
+                direction = Direction.SOUTH;
             }
         } else {
             if (command.equals("r")) {
-                direction = "S";
+                direction = Direction.SOUTH;
             } else {
-                direction = "N";
+                direction = Direction.NORTH;
             }
         }
     }
@@ -120,5 +120,11 @@ public class Rover {
         result = 31 * result + y;
         result = 31 * result + x;
         return result;
+    }
+
+    public class Direction {
+        public static final String NORTH = "N";
+        public static final String SOUTH = "S";
+        public static final String WEST = "W";
     }
 }
