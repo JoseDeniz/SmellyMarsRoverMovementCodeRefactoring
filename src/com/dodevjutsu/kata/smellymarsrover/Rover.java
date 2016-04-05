@@ -120,48 +120,62 @@ public class Rover {
     public enum Direction {
         NORTH("N") {
             @Override
-            public Direction rotate(Command command) {
-                if (command == Command.RIGHT) {
-                    return EAST;
-                } else {
-                    return WEST;
-                }
+            protected Direction rotateRight() {
+                return EAST;
+            }
+
+            @Override
+            protected Direction rotateLeft() {
+                return WEST;
             }
         },
         SOUTH("S") {
             @Override
-            public Direction rotate(Command command) {
-                if (command == Command.RIGHT) {
-                    return (WEST);
-                } else {
-                    return (EAST);
-                }
+            protected Direction rotateRight() {
+                return (WEST);
+            }
+
+            @Override
+            protected Direction rotateLeft() {
+                return (EAST);
             }
         },
-        WEST("W"){
+        WEST("W") {
             @Override
-            public Direction rotate(Command command) {
-                if (command == Command.RIGHT) {
-                    return (NORTH);
-                } else {
-                    return (SOUTH);
-                }
+            protected Direction rotateRight() {
+                return (NORTH);
+            }
+
+            @Override
+            protected Direction rotateLeft() {
+                return (SOUTH);
             }
         },
         EAST("E") {
             @Override
-            public Direction rotate(Command command) {
-                if (command == Command.RIGHT) {
-                    return (SOUTH);
-                } else {
-                    return (NORTH);
-                }
+            protected Direction rotateRight() {
+                return (SOUTH);
+            }
+
+            @Override
+            protected Direction rotateLeft() {
+                return (NORTH);
             }
         };
 
         private final String value;
 
-        public abstract Direction rotate(Command command);
+        public Direction rotate(Command command) {
+            if (command == Command.RIGHT) {
+                return rotateRight();
+            } else {
+                return rotateLeft();
+            }
+        }
+
+        protected abstract Direction rotateRight();
+
+        protected abstract Direction rotateLeft();
 
         Direction(String value) {
             this.value = value;
