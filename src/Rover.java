@@ -3,12 +3,14 @@ import java.util.List;
 
 public class Rover {
 
+    private final DirectionE direction;
     private String directionValue;
     private int y;
     private int x;
 
     public Rover(int x, int y, String directionValue) {
         this.directionValue = directionValue;
+        this.direction = DirectionE.from(directionValue);
         this.y = y;
         this.x = x;
     }
@@ -140,5 +142,15 @@ public class Rover {
         DirectionE(String value) {
             this.value = value;
         }
+
+        public static DirectionE from(String value){
+            for (DirectionE current : values()) {
+                if (current.value.equals(value)) {
+                    return current;
+                }
+            }
+            throw new RuntimeException("Passed value is not correct: " + value);
+        }
+
     }
 }
