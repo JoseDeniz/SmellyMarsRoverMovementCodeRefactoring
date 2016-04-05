@@ -12,7 +12,7 @@ public class Rover {
 
     public void receive(String commandsSequence) {
         for (int i = 0; i < commandsSequence.length(); ++i) {
-            String command = commandsSequence.substring(i, i + 1);
+            String command = String.valueOf(commandsSequence.charAt(i));
             applyCommand(command);
         }
     }
