@@ -68,6 +68,7 @@ public class Rover {
 
     private void rotate(String command) {
         if (isDirection(NORTH)) {
+//            setDirection(direction.rotate(command));
             rotateWhenNorth(command);
         } else if (isDirection(SOUTH)) {
             if (command.equals("r")) {
