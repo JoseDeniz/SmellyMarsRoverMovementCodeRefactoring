@@ -14,13 +14,17 @@ public class Rover {
     }
 
     public void receive(String commandsSequence) {
+        List<String> commands = parseCommands(commandsSequence);
+        commands.forEach(this::applyCommand);
+    }
+
+    private List<String> parseCommands(String commandsSequence) {
         List<String> commands = new ArrayList<>();
         for (int i = 0; i < commandsSequence.length(); ++i) {
             String command = String.valueOf(commandsSequence.charAt(i));
             commands.add(command);
         }
-        commands.forEach(this::applyCommand);
-
+        return commands;
     }
 
     private void applyCommand(String command) {
