@@ -68,7 +68,7 @@ public class Rover {
 
     private void rotate(String command) {
         if (isDirection(NORTH)) {
-//            setDirection(direction.rotate(command));
+//            setDirection(direction.rotate(Command.from(command)));
             rotateWhenNorth(command);
         } else if (isDirection(SOUTH)) {
             if (command.equals("r")) {
@@ -125,7 +125,22 @@ public class Rover {
     }
 
     public enum Command{
-        RIGHT;
+        RIGHT("r");
+
+        private String value;
+
+        Command(String value) {
+            this.value = value;
+        }
+
+        public static Command from(String value) {
+            for (Command current : values()) {
+                if (current.value.equals(value)) {
+                    return current;
+                }
+            }
+            throw new RuntimeException("Passed value is not correct: " + value);
+        }
     }
 
     public enum Direction {
