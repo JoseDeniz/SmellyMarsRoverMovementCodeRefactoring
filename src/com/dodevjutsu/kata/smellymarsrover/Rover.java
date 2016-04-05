@@ -166,7 +166,7 @@ public class Rover {
         private final String value;
 
         public Direction rotate(Command command) {
-            if (command == Command.RIGHT) {
+            if (Command.RIGHT == command) {
                 return rotateRight();
             } else {
                 return rotateLeft();
