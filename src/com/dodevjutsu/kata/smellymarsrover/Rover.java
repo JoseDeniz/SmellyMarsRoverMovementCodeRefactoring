@@ -3,6 +3,8 @@ package com.dodevjutsu.kata.smellymarsrover;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.dodevjutsu.kata.smellymarsrover.Rover.Direction.*;
+
 public class Rover {
 
     private Direction direction;
@@ -10,7 +12,7 @@ public class Rover {
     private int x;
 
     public Rover(int x, int y, String directionValue) {
-        setDirection(Direction.from(directionValue));
+        setDirection(from(directionValue));
         this.y = y;
         this.x = x;
     }
@@ -49,13 +51,13 @@ public class Rover {
         }
         int displacement = displacement1;
 
-        if (isDirection(Direction.NORTH)) {
+        if (isDirection(NORTH)) {
             y += displacement;
-        } else if (isDirection(Direction.SOUTH)) {
+        } else if (isDirection(SOUTH)) {
             y -= displacement;
-        } else if (isDirection(Direction.WEST)) {
+        } else if (isDirection(WEST)) {
             x -= displacement;
-        } else if (isDirection(Direction.EAST)){
+        } else if (isDirection(EAST)){
             x += displacement;
         }
     }
@@ -65,29 +67,29 @@ public class Rover {
     }
 
     private void rotate(String command) {
-        if (isDirection(Direction.NORTH)) {
+        if (isDirection(NORTH)) {
             if (command.equals("r")) {
-                setDirection(Direction.EAST);
+                setDirection(EAST);
             } else {
-                setDirection(Direction.WEST);
+                setDirection(WEST);
             }
-        } else if (isDirection(Direction.SOUTH)) {
+        } else if (isDirection(SOUTH)) {
             if (command.equals("r")) {
-                setDirection(Direction.WEST);
+                setDirection(WEST);
             } else {
-                setDirection(Direction.EAST);
+                setDirection(EAST);
             }
-        } else if (isDirection(Direction.WEST)) {
+        } else if (isDirection(WEST)) {
             if (command.equals("r")) {
-                setDirection(Direction.NORTH);
+                setDirection(NORTH);
             } else {
-                setDirection(Direction.SOUTH);
+                setDirection(SOUTH);
             }
         } else {
             if (command.equals("r")) {
-                setDirection(Direction.SOUTH);
+                setDirection(SOUTH);
             } else {
-                setDirection(Direction.NORTH);
+                setDirection(NORTH);
             }
         }
     }
