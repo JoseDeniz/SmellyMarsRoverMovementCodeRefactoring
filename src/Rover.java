@@ -14,12 +14,16 @@ public class Rover {
         for (int i = 0; i < commandsSequence.length(); ++i) {
             String command = commandsSequence.substring(i, i + 1);
 
-            if (command.equals("l") || command.equals("r")) {
+            if (isRotation(command)) {
                 rotate(command);
             } else {
                 displace(command);
             }
         }
+    }
+
+    private boolean isRotation(String command) {
+        return command.equals("l") || command.equals("r");
     }
 
     private void displace(String command) {
