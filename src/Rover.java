@@ -15,33 +15,7 @@ public class Rover {
             String command = commandsSequence.substring(i, i + 1);
 
             if (command.equals("l") || command.equals("r")) {
-
-                // Rotate Rover
-                if (direction.equals("N")) {
-                    if (command.equals("r")) {
-                        direction = "E";
-                    } else {
-                        direction = "W";
-                    }
-                } else if (direction.equals("S")) {
-                    if (command.equals("r")) {
-                        direction = "W";
-                    } else {
-                        direction = "E";
-                    }
-                } else if (direction.equals("W")) {
-                    if (command.equals("r")) {
-                        direction = "N";
-                    } else {
-                        direction = "S";
-                    }
-                } else {
-                    if (command.equals("r")) {
-                        direction = "S";
-                    } else {
-                        direction = "N";
-                    }
-                }
+                rotate(command);
             } else {
 
                 // Displace Rover
@@ -61,6 +35,34 @@ public class Rover {
                 } else {
                     x += displacement;
                 }
+            }
+        }
+    }
+
+    private void rotate(String command) {
+        if (direction.equals("N")) {
+            if (command.equals("r")) {
+                direction = "E";
+            } else {
+                direction = "W";
+            }
+        } else if (direction.equals("S")) {
+            if (command.equals("r")) {
+                direction = "W";
+            } else {
+                direction = "E";
+            }
+        } else if (direction.equals("W")) {
+            if (command.equals("r")) {
+                direction = "N";
+            } else {
+                direction = "S";
+            }
+        } else {
+            if (command.equals("r")) {
+                direction = "S";
+            } else {
+                direction = "N";
             }
         }
     }
@@ -91,5 +93,13 @@ public class Rover {
             return false;
 
         return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = direction != null ? direction.hashCode() : 0;
+        result = 31 * result + y;
+        result = 31 * result + x;
+        return result;
     }
 }
