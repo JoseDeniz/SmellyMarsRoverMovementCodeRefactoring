@@ -3,12 +3,12 @@ import java.util.List;
 
 public class Rover {
 
-    private DirectionE direction;
+    private Direction direction;
     private int y;
     private int x;
 
     public Rover(int x, int y, String directionValue) {
-        setDirection(DirectionE.from(directionValue));
+        setDirection(Direction.from(directionValue));
         this.y = y;
         this.x = x;
     }
@@ -47,50 +47,50 @@ public class Rover {
         }
         int displacement = displacement1;
 
-        if (isDirection(DirectionE.NORTH)) {
+        if (isDirection(Direction.NORTH)) {
             y += displacement;
-        } else if (isDirection(DirectionE.SOUTH)) {
+        } else if (isDirection(Direction.SOUTH)) {
             y -= displacement;
-        } else if (isDirection(DirectionE.WEST)) {
+        } else if (isDirection(Direction.WEST)) {
             x -= displacement;
-        } else if (isDirection(DirectionE.EAST)){
+        } else if (isDirection(Direction.EAST)){
             x += displacement;
         }
     }
 
-    private boolean isDirection(DirectionE value) {
+    private boolean isDirection(Direction value) {
         return direction == value;
     }
 
     private void rotate(String command) {
-        if (isDirection(DirectionE.NORTH)) {
+        if (isDirection(Direction.NORTH)) {
             if (command.equals("r")) {
-                setDirection(DirectionE.EAST);
+                setDirection(Direction.EAST);
             } else {
-                setDirection(DirectionE.WEST);
+                setDirection(Direction.WEST);
             }
-        } else if (isDirection(DirectionE.SOUTH)) {
+        } else if (isDirection(Direction.SOUTH)) {
             if (command.equals("r")) {
-                setDirection(DirectionE.WEST);
+                setDirection(Direction.WEST);
             } else {
-                setDirection(DirectionE.EAST);
+                setDirection(Direction.EAST);
             }
-        } else if (isDirection(DirectionE.WEST)) {
+        } else if (isDirection(Direction.WEST)) {
             if (command.equals("r")) {
-                setDirection(DirectionE.NORTH);
+                setDirection(Direction.NORTH);
             } else {
-                setDirection(DirectionE.SOUTH);
+                setDirection(Direction.SOUTH);
             }
         } else {
             if (command.equals("r")) {
-                setDirection(DirectionE.SOUTH);
+                setDirection(Direction.SOUTH);
             } else {
-                setDirection(DirectionE.NORTH);
+                setDirection(Direction.NORTH);
             }
         }
     }
 
-    private void setDirection(DirectionE value) {
+    private void setDirection(Direction value) {
         this.direction = (value);
     }
 
@@ -115,7 +115,7 @@ public class Rover {
         return result;
     }
 
-    public enum DirectionE {
+    public enum Direction {
         NORTH ("N"),
         SOUTH ("S"),
         WEST ("W"),
@@ -123,12 +123,12 @@ public class Rover {
 
         private final String value;
 
-        DirectionE(String value) {
+        Direction(String value) {
             this.value = value;
         }
 
-        public static DirectionE from(String value){
-            for (DirectionE current : values()) {
+        public static Direction from(String value){
+            for (Direction current : values()) {
                 if (current.value.equals(value)) {
                     return current;
                 }
