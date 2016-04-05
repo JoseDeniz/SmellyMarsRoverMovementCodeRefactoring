@@ -57,7 +57,7 @@ public class Rover {
             y -= displacement;
         } else if (isDirection(WEST)) {
             x -= displacement;
-        } else if (isDirection(EAST)){
+        } else if (isDirection(EAST)) {
             x += displacement;
         }
     }
@@ -125,10 +125,10 @@ public class Rover {
     }
 
     public enum Direction {
-        NORTH ("N"),
-        SOUTH ("S"),
-        WEST ("W"),
-        EAST ("E");
+        NORTH("N"),
+        SOUTH("S"),
+        WEST("W"),
+        EAST("E");
 
         private final String value;
 
@@ -136,7 +136,7 @@ public class Rover {
             this.value = value;
         }
 
-        public static Direction from(String value){
+        public static Direction from(String value) {
             for (Direction current : values()) {
                 if (current.value.equals(value)) {
                     return current;
