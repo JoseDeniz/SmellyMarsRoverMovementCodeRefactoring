@@ -59,8 +59,8 @@ public class Rover {
         }
     }
 
-    private boolean isDirection(String north) {
-        return directionValue.equals(north);
+    private boolean isDirection(String value) {
+        return directionValue.equals(value);
     }
 
     private void rotate(String command) {
