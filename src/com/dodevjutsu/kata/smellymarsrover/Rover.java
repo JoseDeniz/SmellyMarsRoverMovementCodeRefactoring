@@ -165,18 +165,6 @@ public class Rover {
 
         private final String value;
 
-        public Direction rotate(Command command) {
-            if (Command.RIGHT == command) {
-                return rotateRight();
-            } else {
-                return rotateLeft();
-            }
-        }
-
-        protected abstract Direction rotateRight();
-
-        protected abstract Direction rotateLeft();
-
         Direction(String value) {
             this.value = value;
         }
@@ -188,6 +176,18 @@ public class Rover {
                 }
             }
             throw new RuntimeException("Passed value is not correct: " + value);
+        }
+
+        protected abstract Direction rotateRight();
+
+        protected abstract Direction rotateLeft();
+
+        public Direction rotate(Command command) {
+            if (Command.RIGHT == command) {
+                return rotateRight();
+            } else {
+                return rotateLeft();
+            }
         }
 
     }
