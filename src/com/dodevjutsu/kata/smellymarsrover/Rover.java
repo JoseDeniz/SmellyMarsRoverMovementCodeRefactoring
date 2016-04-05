@@ -67,10 +67,6 @@ public class Rover {
     }
 
     private void rotate(String command) {
-        applyRotation(command);
-    }
-
-    private void applyRotation(String command) {
         setDirection(direction.rotate(Command.from(command)));
     }
 
