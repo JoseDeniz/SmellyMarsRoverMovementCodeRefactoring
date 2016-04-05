@@ -124,13 +124,30 @@ public class Rover {
         return result;
     }
 
+    public enum Command{
+        RIGHT;
+    }
+
     public enum Direction {
-        NORTH("N"),
+        NORTH("N") {
+            @Override
+            public Direction rotate(Command command) {
+                if (command == Command.RIGHT) {
+                    return EAST;
+                }else{
+                    return WEST;
+                }
+            }
+        },
         SOUTH("S"),
         WEST("W"),
         EAST("E");
 
         private final String value;
+
+        public Direction rotate(Command command){
+            throw new UnsupportedOperationException("this direction is not yet ready");
+        }
 
         Direction(String value) {
             this.value = value;
