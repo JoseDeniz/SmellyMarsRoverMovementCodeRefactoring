@@ -53,7 +53,7 @@ public class Rover {
             y -= displacement;
         } else if (direction.equals(Direction.WEST)) {
             x -= displacement;
-        } else {
+        } else if (direction.equals(Direction.EAST)){
             x += displacement;
         }
     }
@@ -61,7 +61,7 @@ public class Rover {
     private void rotate(String command) {
         if (direction.equals(Direction.NORTH)) {
             if (command.equals("r")) {
-                direction = "E";
+                direction = Direction.EAST;
             } else {
                 direction = Direction.WEST;
             }
@@ -69,7 +69,7 @@ public class Rover {
             if (command.equals("r")) {
                 direction = Direction.WEST;
             } else {
-                direction = "E";
+                direction = Direction.EAST;
             }
         } else if (direction.equals(Direction.WEST)) {
             if (command.equals("r")) {
@@ -126,5 +126,6 @@ public class Rover {
         public static final String NORTH = "N";
         public static final String SOUTH = "S";
         public static final String WEST = "W";
+        public static final String EAST = "E";
     }
 }
