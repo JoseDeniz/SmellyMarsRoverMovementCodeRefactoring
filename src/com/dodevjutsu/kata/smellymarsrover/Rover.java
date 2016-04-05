@@ -115,7 +115,7 @@ public class Rover {
         return result;
     }
 
-    public enum Command{
+    public enum Command {
         RIGHT("r"),
         LEFT("l");
 
@@ -141,7 +141,7 @@ public class Rover {
             public Direction rotate(Command command) {
                 if (command == Command.RIGHT) {
                     return EAST;
-                }else{
+                } else {
                     return WEST;
                 }
             }
@@ -152,7 +152,7 @@ public class Rover {
 
         private final String value;
 
-        public Direction rotate(Command command){
+        public Direction rotate(Command command) {
             throw new UnsupportedOperationException("this direction is not yet ready");
         }
 
