@@ -49,31 +49,35 @@ public class Rover {
         }
         int displacement = displacement1;
 
-        if (directionValue.equals(Direction.NORTH)) {
+        if (isDirection(Direction.NORTH)) {
             y += displacement;
-        } else if (directionValue.equals(Direction.SOUTH)) {
+        } else if (isDirection(Direction.SOUTH)) {
             y -= displacement;
-        } else if (directionValue.equals(Direction.WEST)) {
+        } else if (isDirection(Direction.WEST)) {
             x -= displacement;
-        } else if (directionValue.equals(Direction.EAST)){
+        } else if (isDirection(Direction.EAST)){
             x += displacement;
         }
     }
 
+    private boolean isDirection(String north) {
+        return directionValue.equals(north);
+    }
+
     private void rotate(String command) {
-        if (directionValue.equals(Direction.NORTH)) {
+        if (isDirection(Direction.NORTH)) {
             if (command.equals("r")) {
                 directionValue = Direction.EAST;
             } else {
                 directionValue = Direction.WEST;
             }
-        } else if (directionValue.equals(Direction.SOUTH)) {
+        } else if (isDirection(Direction.SOUTH)) {
             if (command.equals("r")) {
                 directionValue = Direction.WEST;
             } else {
                 directionValue = Direction.EAST;
             }
-        } else if (directionValue.equals(Direction.WEST)) {
+        } else if (isDirection(Direction.WEST)) {
             if (command.equals("r")) {
                 directionValue = Direction.NORTH;
             } else {
@@ -104,7 +108,7 @@ public class Rover {
         if (directionValue == null) {
             if (other.directionValue != null)
                 return false;
-        } else if (!directionValue.equals(other.directionValue))
+        } else if (!isDirection(other.directionValue))
             return false;
 
         if (x != other.x)
