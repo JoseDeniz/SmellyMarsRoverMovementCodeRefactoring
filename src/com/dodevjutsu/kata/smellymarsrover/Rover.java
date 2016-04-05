@@ -171,9 +171,7 @@ public class Rover {
 
         private final String value;
 
-        public Direction rotate(Command command) {
-            throw new UnsupportedOperationException("this direction is not yet ready");
-        }
+        public abstract Direction rotate(Command command);
 
         Direction(String value) {
             this.value = value;
