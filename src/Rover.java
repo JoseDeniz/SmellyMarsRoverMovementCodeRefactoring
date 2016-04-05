@@ -3,14 +3,13 @@ import java.util.List;
 
 public class Rover {
 
-    private final DirectionE direction;
+    private DirectionE direction;
     private String directionValue;
     private int y;
     private int x;
 
     public Rover(int x, int y, String directionValue) {
-        this.directionValue = directionValue;
-        this.direction = DirectionE.from(directionValue);
+        setDirection(directionValue);
         this.y = y;
         this.x = x;
     }
@@ -67,29 +66,34 @@ public class Rover {
     private void rotate(String command) {
         if (isDirection(Direction.NORTH)) {
             if (command.equals("r")) {
-                directionValue = Direction.EAST;
+                setDirection(Direction.EAST);
             } else {
-                directionValue = Direction.WEST;
+                setDirection(Direction.WEST);
             }
         } else if (isDirection(Direction.SOUTH)) {
             if (command.equals("r")) {
-                directionValue = Direction.WEST;
+                setDirection(Direction.WEST);
             } else {
-                directionValue = Direction.EAST;
+                setDirection(Direction.EAST);
             }
         } else if (isDirection(Direction.WEST)) {
             if (command.equals("r")) {
-                directionValue = Direction.NORTH;
+                setDirection(Direction.NORTH);
             } else {
-                directionValue = Direction.SOUTH;
+                setDirection(Direction.SOUTH);
             }
         } else {
             if (command.equals("r")) {
-                directionValue = Direction.SOUTH;
+                setDirection(Direction.SOUTH);
             } else {
-                directionValue = Direction.NORTH;
+                setDirection(Direction.NORTH);
             }
         }
+    }
+
+    private void setDirection(String value) {
+        directionValue = value;
+        this.direction = DirectionE.from(directionValue);
     }
 
     @Override
