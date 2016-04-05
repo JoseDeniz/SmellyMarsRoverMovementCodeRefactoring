@@ -60,7 +60,7 @@ public class Rover {
     }
 
     private boolean isDirection(String value) {
-        return directionValue.equals(value) || direction == DirectionE.from(value);
+        return direction == DirectionE.from(value);
     }
 
     private void rotate(String command) {
@@ -92,41 +92,25 @@ public class Rover {
     }
 
     private void setDirection(String value) {
-        directionValue = value;
-        this.direction = DirectionE.from(directionValue);
+        this.direction = DirectionE.from(value);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-        if (obj == null)
-            return false;
+        Rover rover = (Rover) o;
 
-        if (getClass() != obj.getClass())
-            return false;
+        if (y != rover.y) return false;
+        if (x != rover.x) return false;
+        return direction == rover.direction;
 
-        Rover other = (Rover) obj;
-
-        if (directionValue == null) {
-            if (other.directionValue != null)
-                return false;
-        } else if (!isDirection(other.directionValue))
-            return false;
-
-        if (x != other.x)
-            return false;
-
-        if (y != other.y)
-            return false;
-
-        return true;
     }
 
     @Override
     public int hashCode() {
-        int result = directionValue != null ? directionValue.hashCode() : 0;
+        int result = direction != null ? direction.hashCode() : 0;
         result = 31 * result + y;
         result = 31 * result + x;
         return result;
