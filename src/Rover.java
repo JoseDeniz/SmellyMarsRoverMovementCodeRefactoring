@@ -128,4 +128,17 @@ public class Rover {
         public static final String WEST = "W";
         public static final String EAST = "E";
     }
+
+    public enum DirectionE {
+        NORTH ("N"),
+        SOUTH ("S"),
+        WEST ("W"),
+        EAST ("E");
+
+        private final String value;
+
+        DirectionE(String value) {
+            this.value = value;
+        }
+    }
 }
