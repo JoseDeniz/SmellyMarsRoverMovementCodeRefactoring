@@ -68,11 +68,7 @@ public class Rover {
 
     private void rotate(String command) {
         if (isDirection(NORTH)) {
-            if (command.equals("r")) {
-                setDirection(EAST);
-            } else {
-                setDirection(WEST);
-            }
+            rotateWhenNorth(command);
         } else if (isDirection(SOUTH)) {
             if (command.equals("r")) {
                 setDirection(WEST);
@@ -91,6 +87,14 @@ public class Rover {
             } else {
                 setDirection(NORTH);
             }
+        }
+    }
+
+    private void rotateWhenNorth(String command) {
+        if (command.equals("r")) {
+            setDirection(EAST);
+        } else {
+            setDirection(WEST);
         }
     }
 
