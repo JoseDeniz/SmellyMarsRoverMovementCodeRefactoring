@@ -1,3 +1,5 @@
+package com.dodevjutsu.kata.smellymarsrover;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,5 +1,8 @@
+package com.dodevjutsu.kata.smellymarsrover;
+
 import static org.junit.Assert.*;
 
+import com.dodevjutsu.kata.smellymarsrover.Rover;
 import org.junit.Test;
 
 public class RoverRotationTests {
