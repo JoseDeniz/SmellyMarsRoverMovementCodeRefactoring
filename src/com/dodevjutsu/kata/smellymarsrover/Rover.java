@@ -70,11 +70,7 @@ public class Rover {
         if (isDirection(NORTH)) {
             applyRotation(command);
         } else if (isDirection(SOUTH)) {
-            if (command.equals("r")) {
-                setDirection(WEST);
-            } else {
-                setDirection(EAST);
-            }
+            applyRotation(command);
         } else if (isDirection(WEST)) {
             if (command.equals("r")) {
                 setDirection(NORTH);
@@ -150,7 +146,16 @@ public class Rover {
                 }
             }
         },
-        SOUTH("S"),
+        SOUTH("S") {
+            @Override
+            public Direction rotate(Command command) {
+                if (command == Command.RIGHT) {
+                    return (WEST);
+                } else {
+                    return (EAST);
+                }
+            }
+        },
         WEST("W"),
         EAST("E");
 
