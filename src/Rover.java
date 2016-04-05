@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Rover {
 
     private String direction;
@@ -11,10 +14,13 @@ public class Rover {
     }
 
     public void receive(String commandsSequence) {
+        List<String> commands = new ArrayList<>();
         for (int i = 0; i < commandsSequence.length(); ++i) {
             String command = String.valueOf(commandsSequence.charAt(i));
-            applyCommand(command);
+            commands.add(command);
         }
+        commands.forEach(this::applyCommand);
+
     }
 
     private void applyCommand(String command) {
