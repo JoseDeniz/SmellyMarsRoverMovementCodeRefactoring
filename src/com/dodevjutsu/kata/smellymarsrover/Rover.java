@@ -68,8 +68,8 @@ public class Rover {
 
     private void rotate(String command) {
         if (isDirection(NORTH)) {
-//            setDirection(direction.rotate(Command.from(command)));
-            rotateWhenNorth(command);
+            setDirection(direction.rotate(Command.from(command)));
+//            rotateWhenNorth(command);
         } else if (isDirection(SOUTH)) {
             if (command.equals("r")) {
                 setDirection(WEST);
@@ -125,7 +125,8 @@ public class Rover {
     }
 
     public enum Command{
-        RIGHT("r");
+        RIGHT("r"),
+        LEFT("l");
 
         private String value;
 
