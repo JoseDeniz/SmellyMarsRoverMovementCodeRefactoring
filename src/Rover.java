@@ -79,6 +79,7 @@ public class Rover {
         return vector.direction.representation;
     }
 
+
     public void setDirection(String representation) {
         this.vector.direction = Direction.from(representation);
     }
@@ -99,6 +100,9 @@ public class Rover {
             return new Direction(representation);
         }
 
+        public static final Direction north(){
+            return from(NORTH_VALUE);
+        }
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
@@ -201,8 +205,10 @@ public class Rover {
         }
 
         public Vector displace(Command.DisplacementCommand commandAction) {
-            if (getDirection().equals(Direction.NORTH_VALUE)) {
+            if (getDirectionType().equals(Direction.north())) {
                 return this.with(position.displaceY(commandAction.displacement()));
+            } else if (getDirection().equals(Direction.NORTH_VALUE)) {
+                throw new RuntimeException("Defect, querying old North");
             } else if (getDirection().equals(Direction.SOUTH)) {
                 return this.with(position.displaceY(-commandAction.displacement()));
             } else if (getDirection().equals(Direction.WEST)) {
@@ -213,13 +219,17 @@ public class Rover {
                 throw new RuntimeException("Defect: a direction not in the 4 cardinal points");
             }
         }
-
+        
         private Vector with(Point position) {
             return from(position, this.direction);
         }
 
         public String getDirection(){
             return this.direction.representation;
+        }
+
+        public Direction getDirectionType() {
+            return this.direction;
         }
 
         @Override
