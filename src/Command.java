@@ -22,10 +22,12 @@ public class Command {
     }
 
     public static Command backward() {
+        int displacement1 = -1;
         return null;
     }
 
     public static Command forward() {
+       int displacement1 = 1;
         return null;
     }
 }
