@@ -28,6 +28,7 @@ public class Rover {
             } else {
                 Command.DisplacementCommand commandAction = obtainDisplacement(command);
 
+//                vector = vector.displace(commandAction);
                 if (getDirection().equals(Direction.NORTH)) {
                     position = position.displaceY(commandAction.displacement());
                 } else if (getDirection().equals(Direction.SOUTH)) {
