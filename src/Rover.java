@@ -9,7 +9,7 @@ public class Rover {
     private final RotationConfiguration rotationRight;
 
     public Rover(int x, int y, String direction) {
-        this.direction = direction;
+        this.setDirection(direction);
         position = new Point(x, y);
         rotationLeft = RotationConfiguration.left();
         rotationRight = RotationConfiguration.right();
@@ -20,17 +20,17 @@ public class Rover {
             String command = commandsSequence.substring(i, i + 1);
 
             if (Command.from(command).isRotationLeft()) {
-                direction = rotationLeft.apply(direction);
+                setDirection(rotationLeft.apply(getDirection()));
             } else if (Command.from(command).isRotationRight()) {
-                direction = rotationRight.apply(direction);
+                setDirection(rotationRight.apply(getDirection()));
             } else {
                 Command.DisplacementCommand commandAction = obtainDisplacement(command);
 
-                if (direction.equals(Direction.NORTH)) {
+                if (getDirection().equals(Direction.NORTH)) {
                     position = position.displaceY(commandAction.displacement());
-                } else if (direction.equals(Direction.SOUTH)) {
+                } else if (getDirection().equals(Direction.SOUTH)) {
                     position = position.displaceY(-commandAction.displacement());
-                } else if (direction.equals(Direction.WEST)) {
+                } else if (getDirection().equals(Direction.WEST)) {
                     position = position.displaceX(-commandAction.displacement());
                 } else {
                     position = position.displaceX(commandAction.displacement());
@@ -61,10 +61,10 @@ public class Rover {
 
         Rover other = (Rover) obj;
 
-        if (direction == null) {
-            if (other.direction != null)
+        if (getDirection() == null) {
+            if (other.getDirection() != null)
                 return false;
-        } else if (!direction.equals(other.direction))
+        } else if (!getDirection().equals(other.getDirection()))
             return false;
 
         if (getX() != other.getX())
@@ -82,6 +82,14 @@ public class Rover {
 
     public int getX() {
         return position.x;
+    }
+
+    public String getDirection() {
+        return direction;
+    }
+
+    public void setDirection(String direction) {
+        this.direction = direction;
     }
 
     private class Direction {
