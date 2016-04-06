@@ -10,7 +10,7 @@ public class Rover {
 
     public Rover(int x, int y, String direction) {
         this.direction = direction;
-        position = new Point();
+        position = new Point(x, y);
         this.setY(y);
         this.setX(x);
         rotationLeft = RotationConfiguration.left();
@@ -136,5 +136,10 @@ public class Rover {
     private class Point {
         int x;
         int y;
+
+        public Point(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
     }
 }
