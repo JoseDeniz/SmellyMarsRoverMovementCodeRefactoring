@@ -25,16 +25,12 @@ public class Rover {
                 actions.add(Direction.EAST, Direction.NORTH);
                 direction = actions.apply(direction);
             } else if (command.equals("r")) {
-                // Rotate Rover
-                if (direction.equals(Direction.NORTH)) {
-                    direction = Direction.EAST;
-                } else if (direction.equals(Direction.SOUTH)) {
-                    direction = Direction.WEST;
-                } else if (direction.equals(Direction.WEST)) {
-                    direction = Direction.NORTH;
-                } else {
-                    direction = Direction.SOUTH;
-                }
+                Actions actions = new Actions();
+                actions.add(Direction.NORTH, Direction.EAST);
+                actions.add(Direction.SOUTH, Direction.WEST);
+                actions.add(Direction.WEST, Direction.NORTH);
+                actions.add(Direction.EAST, Direction.SOUTH);
+                direction = actions.apply(direction);
             } else {
                 int displacement1 = -1;
 
