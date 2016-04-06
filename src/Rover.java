@@ -40,7 +40,7 @@ public class Rover {
                 } else if (direction.equals(Direction.WEST)) {
                     position = position.displaceX(-displacement);
                 } else {
-                    setX(getX() + displacement);
+                    position = position.displaceX(displacement);
                 }
             }
         }
