@@ -7,7 +7,6 @@ public class Rover {
     private int y;
     private int x;
     private final RotationConfiguration rotationLeft;
-    private final RotationConfiguration rotation;
     private final RotationConfiguration rotationRight;
 
     public Rover(int x, int y, String direction) {
