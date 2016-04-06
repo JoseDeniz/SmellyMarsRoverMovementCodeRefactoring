@@ -18,14 +18,14 @@ public class Rover {
             String command = commandsSequence.substring(i, i + 1);
 
             if (command.equals("l")) {
-                Actions rotation = new Actions();
+                RotationConfiguration rotation = new RotationConfiguration();
                 rotation.add(Direction.NORTH, Direction.WEST);
                 rotation.add(Direction.SOUTH, Direction.EAST);
                 rotation.add(Direction.WEST, Direction.SOUTH);
                 rotation.add(Direction.EAST, Direction.NORTH);
                 direction = rotation.apply(direction);
             } else if (command.equals("r")) {
-                Actions rotation = new Actions();
+                RotationConfiguration rotation = new RotationConfiguration();
                 rotation.add(Direction.NORTH, Direction.EAST);
                 rotation.add(Direction.SOUTH, Direction.WEST);
                 rotation.add(Direction.WEST, Direction.NORTH);
@@ -87,10 +87,10 @@ public class Rover {
         private static final String WEST = "W";
     }
 
-    private class Actions {
+    private class RotationConfiguration {
         private Map<String, String> values;
 
-        public Actions() {
+        public RotationConfiguration() {
             values = new HashMap<>();
         }
 
