@@ -13,16 +13,8 @@ public class Rover {
         this.direction = direction;
         this.y = y;
         this.x = x;
-        rotationLeft = new RotationConfiguration();
-        rotationLeft.add(Direction.NORTH, Direction.WEST);
-        rotationLeft.add(Direction.SOUTH, Direction.EAST);
-        rotationLeft.add(Direction.WEST, Direction.SOUTH);
-        rotationLeft.add(Direction.EAST, Direction.NORTH);
-        rotationRight = new RotationConfiguration();
-        rotationRight.add(Direction.NORTH, Direction.EAST);
-        rotationRight.add(Direction.SOUTH, Direction.WEST);
-        rotationRight.add(Direction.WEST, Direction.NORTH);
-        rotationRight.add(Direction.EAST, Direction.SOUTH);
+        rotationLeft = RotationConfiguration.left();
+        rotationRight = RotationConfiguration.right();
     }
 
     public void receive(String commandsSequence) {
@@ -97,7 +89,7 @@ public class Rover {
         private static final String WEST = "W";
     }
 
-    private class RotationConfiguration {
+    private static class RotationConfiguration {
         private Map<String, String> values;
 
         public RotationConfiguration() {
@@ -110,6 +102,24 @@ public class Rover {
 
         public String apply(String from) {
             return values.get(from);
+        }
+
+        public static RotationConfiguration left() {
+            RotationConfiguration result = new RotationConfiguration();
+            result.add(Direction.NORTH, Direction.WEST);
+            result.add(Direction.SOUTH, Direction.EAST);
+            result.add(Direction.WEST, Direction.SOUTH);
+            result.add(Direction.EAST, Direction.NORTH);
+            return result;
+        }
+
+        public static RotationConfiguration right() {
+            RotationConfiguration result = new RotationConfiguration();
+            result.add(Direction.NORTH, Direction.EAST);
+            result.add(Direction.SOUTH, Direction.WEST);
+            result.add(Direction.WEST, Direction.NORTH);
+            result.add(Direction.EAST, Direction.SOUTH);
+            return result;
         }
     }
 }
