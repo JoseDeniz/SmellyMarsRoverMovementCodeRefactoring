@@ -9,11 +9,11 @@ public class Command {
     }
 
     boolean isRotationRight(String command) {
-        return command.equals(RIGHT);
+        return representation.equals(RIGHT);
     }
 
     boolean isRotationLeft(String command) {
-        return command.equals(LEFT);
+        return representation.equals(LEFT);
     }
 
     public static Command from(String representation) {
