@@ -21,13 +21,25 @@ public class Command {
         return new Command(representation);
     }
 
-    public static Command backward() {
-        int displacement1 = -1;
-        return null;
+    public static DisplacementCommand backward() {
+        int displacement = -1;
+        return new DisplacementCommand(displacement);
     }
 
-    public static Command forward() {
-       int displacement1 = 1;
-        return null;
+    public static DisplacementCommand forward() {
+        int displacement = 1;
+        return new DisplacementCommand(displacement);
+    }
+
+    public static class DisplacementCommand {
+        private final int displacement;
+
+        public DisplacementCommand(int displacement) {
+            this.displacement = displacement;
+        }
+
+        public int displacement() {
+            return displacement;
+        }
     }
 }

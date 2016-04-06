@@ -24,7 +24,7 @@ public class Rover {
             } else if (Command.from(command).isRotationRight()) {
                 direction = rotationRight.apply(direction);
             } else {
-                Command commandAction = Command.backward();
+                Command.DisplacementCommand commandAction = Command.backward();
                 int displacement1 = -1;
 
                 if (command.equals(Command.FORWARD)) {
@@ -34,7 +34,7 @@ public class Rover {
                 int displacement = displacement1;
 
                 if (direction.equals(Direction.NORTH)) {
-                    position = position.displaceY(displacement);
+                    position = position.displaceY(commandAction.displacement());
                 } else if (direction.equals(Direction.SOUTH)) {
                     position = position.displaceY(-displacement);
                 } else if (direction.equals(Direction.WEST)) {
