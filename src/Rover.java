@@ -25,13 +25,10 @@ public class Rover {
                 direction = rotationRight.apply(direction);
             } else {
                 Command.DisplacementCommand commandAction = Command.backward();
-                int displacement1 = -1;
 
                 if (command.equals(Command.FORWARD)) {
-                    displacement1 = 1;
                     commandAction = Command.forward();
                 }
-                int displacement = displacement1;
 
                 if (direction.equals(Direction.NORTH)) {
                     position = position.displaceY(commandAction.displacement());
