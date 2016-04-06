@@ -36,7 +36,7 @@ public class Rover {
                 if (direction.equals(Direction.NORTH)) {
                     position = position.displaceY(displacement);
                 } else if (direction.equals(Direction.SOUTH)) {
-                    setY(getY() - displacement);
+                    position = position.displaceY(-displacement);
                 } else if (direction.equals(Direction.WEST)) {
                     setX(getX() - displacement);
                 } else {
