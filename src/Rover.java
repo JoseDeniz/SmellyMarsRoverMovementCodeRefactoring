@@ -38,7 +38,7 @@ public class Rover {
                 } else if (direction.equals(Direction.SOUTH)) {
                     position = position.displaceY(-commandAction.displacement());
                 } else if (direction.equals(Direction.WEST)) {
-                    position = position.displaceX(-displacement);
+                    position = position.displaceX(-commandAction.displacement());
                 } else {
                     position = position.displaceX(displacement);
                 }
