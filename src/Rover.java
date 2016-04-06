@@ -18,19 +18,19 @@ public class Rover {
             String command = commandsSequence.substring(i, i + 1);
 
             if (command.equals("l")) {
-                Actions actions = new Actions();
-                actions.add(Direction.NORTH, Direction.WEST);
-                actions.add(Direction.SOUTH, Direction.EAST);
-                actions.add(Direction.WEST, Direction.SOUTH);
-                actions.add(Direction.EAST, Direction.NORTH);
-                direction = actions.apply(direction);
+                Actions rotation = new Actions();
+                rotation.add(Direction.NORTH, Direction.WEST);
+                rotation.add(Direction.SOUTH, Direction.EAST);
+                rotation.add(Direction.WEST, Direction.SOUTH);
+                rotation.add(Direction.EAST, Direction.NORTH);
+                direction = rotation.apply(direction);
             } else if (command.equals("r")) {
-                Actions actions = new Actions();
-                actions.add(Direction.NORTH, Direction.EAST);
-                actions.add(Direction.SOUTH, Direction.WEST);
-                actions.add(Direction.WEST, Direction.NORTH);
-                actions.add(Direction.EAST, Direction.SOUTH);
-                direction = actions.apply(direction);
+                Actions rotation = new Actions();
+                rotation.add(Direction.NORTH, Direction.EAST);
+                rotation.add(Direction.SOUTH, Direction.WEST);
+                rotation.add(Direction.WEST, Direction.NORTH);
+                rotation.add(Direction.EAST, Direction.SOUTH);
+                direction = rotation.apply(direction);
             } else {
                 int displacement1 = -1;
 
