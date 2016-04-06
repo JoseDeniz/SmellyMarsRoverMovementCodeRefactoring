@@ -6,11 +6,24 @@ public class Rover {
     private String direction;
     private int y;
     private int x;
+    private final RotationConfiguration rotationLeft;
+    private final RotationConfiguration rotation;
+    private final RotationConfiguration rotationRight;
 
     public Rover(int x, int y, String direction) {
         this.direction = direction;
         this.y = y;
         this.x = x;
+        rotationLeft = new RotationConfiguration();
+        rotationLeft.add(Direction.NORTH, Direction.WEST);
+        rotationLeft.add(Direction.SOUTH, Direction.EAST);
+        rotationLeft.add(Direction.WEST, Direction.SOUTH);
+        rotationLeft.add(Direction.EAST, Direction.NORTH);
+        rotationRight = new RotationConfiguration();
+        rotationRight.add(Direction.NORTH, Direction.EAST);
+        rotationRight.add(Direction.SOUTH, Direction.WEST);
+        rotationRight.add(Direction.WEST, Direction.NORTH);
+        rotationRight.add(Direction.EAST, Direction.SOUTH);
     }
 
     public void receive(String commandsSequence) {
@@ -18,19 +31,9 @@ public class Rover {
             String command = commandsSequence.substring(i, i + 1);
 
             if (command.equals("l")) {
-                RotationConfiguration rotation = new RotationConfiguration();
-                rotation.add(Direction.NORTH, Direction.WEST);
-                rotation.add(Direction.SOUTH, Direction.EAST);
-                rotation.add(Direction.WEST, Direction.SOUTH);
-                rotation.add(Direction.EAST, Direction.NORTH);
-                direction = rotation.apply(direction);
+                direction = rotationLeft.apply(direction);
             } else if (command.equals("r")) {
-                RotationConfiguration rotation = new RotationConfiguration();
-                rotation.add(Direction.NORTH, Direction.EAST);
-                rotation.add(Direction.SOUTH, Direction.WEST);
-                rotation.add(Direction.WEST, Direction.NORTH);
-                rotation.add(Direction.EAST, Direction.SOUTH);
-                direction = rotation.apply(direction);
+                direction = rotationRight.apply(direction);
             } else {
                 int displacement1 = -1;
 
