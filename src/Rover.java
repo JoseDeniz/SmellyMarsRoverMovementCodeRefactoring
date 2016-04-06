@@ -30,9 +30,9 @@ public class Rover {
         for (int i = 0; i < commandsSequence.length(); ++i) {
             String command = commandsSequence.substring(i, i + 1);
 
-            if (command.equals("l")) {
+            if (isRotationLeft(command)) {
                 direction = rotationLeft.apply(direction);
-            } else if (command.equals("r")) {
+            } else if (isRotationRight(command)) {
                 direction = rotationRight.apply(direction);
             } else {
                 int displacement1 = -1;
@@ -53,6 +53,14 @@ public class Rover {
                 }
             }
         }
+    }
+
+    private boolean isRotationRight(String command) {
+        return command.equals("r");
+    }
+
+    private boolean isRotationLeft(String command) {
+        return command.equals("l");
     }
 
     @Override
