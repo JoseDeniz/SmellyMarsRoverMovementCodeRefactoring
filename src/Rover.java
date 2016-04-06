@@ -5,12 +5,14 @@ public class Rover {
 
     private final RotationConfiguration rotationLeft;
     private final RotationConfiguration rotationRight;
+    private Vector vector;
     private Point position;
     private Direction direction;
 
     public Rover(int x, int y, String directionRepresentation) {
         this.setDirection(directionRepresentation);
         position = new Point(x, y);
+        vector = Vector.from(position, direction);
         rotationLeft = RotationConfiguration.left();
         rotationRight = RotationConfiguration.right();
     }
@@ -158,6 +160,20 @@ public class Rover {
 
         public Point displaceX(int displacement) {
             return new Point(x + displacement, y);
+        }
+    }
+
+    private static class Vector {
+        private final Point position;
+        private final Direction direction;
+
+        public Vector(Point position, Direction direction) {
+            this.position = position;
+            this.direction = direction;
+        }
+
+        public static Vector from(Point position, Direction direction) {
+            return new Vector(position, direction);
         }
     }
 }
