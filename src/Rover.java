@@ -28,7 +28,7 @@ public class Rover {
             } else {
                 int displacement1 = -1;
 
-                if (command.equals("f")) {
+                if (command.equals(Command.FORWARD)) {
                     displacement1 = 1;
                 }
                 int displacement = displacement1;
@@ -47,11 +47,11 @@ public class Rover {
     }
 
     private boolean isRotationRight(String command) {
-        return command.equals("r");
+        return command.equals(Command.RIGHT);
     }
 
     private boolean isRotationLeft(String command) {
-        return command.equals("l");
+        return command.equals(Command.LEFT);
     }
 
     @Override
