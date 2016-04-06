@@ -24,7 +24,7 @@ public class Rover {
                 if (direction.equals(Direction.NORTH)) {
                     direction = actions.apply(Direction.NORTH);
                 } else if (direction.equals(Direction.SOUTH)) {
-                    direction = "E";
+                    direction = Direction.EAST;
                 } else if (direction.equals("W")) {
                     direction = Direction.SOUTH;
                 } else {
@@ -33,7 +33,7 @@ public class Rover {
             } else if (command.equals("r")) {
                 // Rotate Rover
                 if (direction.equals(Direction.NORTH)) {
-                    direction = "E";
+                    direction = Direction.EAST;
                 } else if (direction.equals(Direction.SOUTH)) {
                     direction = "W";
                 } else if (direction.equals("W")) {
@@ -94,6 +94,7 @@ public class Rover {
         private static final String NORTH = "N";
         private static final String WEST = "W";
         private static final String SOUTH = "S";
+        private static final String EAST = "E";
     }
 
     private class Actions {
