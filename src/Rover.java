@@ -22,7 +22,7 @@ public class Rover {
                 actions.add(Direction.NORTH, Direction.WEST);
                 // Rotate Rover
                 if (direction.equals(Direction.NORTH)) {
-                    direction = Direction.WEST;
+                    direction = actions.apply(Direction.NORTH);
                 } else if (direction.equals("S")) {
                     direction = "E";
                 } else if (direction.equals("W")) {
@@ -104,6 +104,10 @@ public class Rover {
 
         public void add(String from, String to) {
             this.values.put(from, to);
+        }
+
+        public String apply(String from) {
+            return values.get(from);
         }
     }
 }
