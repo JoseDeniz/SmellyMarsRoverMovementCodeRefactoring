@@ -43,25 +43,27 @@ public class Rover {
                     }
                 }
             } else {
-
-                // Displace Rover
-                int displacement1 = -1;
-
-                if (command.equals("f")) {
-                    displacement1 = 1;
-                }
-                int displacement = displacement1;
-
-                if (direction.equals("N")) {
-                    y += displacement;
-                } else if (direction.equals("S")) {
-                    y -= displacement;
-                } else if (direction.equals("W")) {
-                    x -= displacement;
-                } else {
-                    x += displacement;
-                }
+                displaceRover(command);
             }
+        }
+    }
+
+    private void displaceRover(String command) {
+        int displacement1 = -1;
+
+        if (command.equals("f")) {
+            displacement1 = 1;
+        }
+        int displacement = displacement1;
+
+        if (direction.equals("N")) {
+            y += displacement;
+        } else if (direction.equals("S")) {
+            y -= displacement;
+        } else if (direction.equals("W")) {
+            x -= displacement;
+        } else {
+            x += displacement;
         }
     }
 
