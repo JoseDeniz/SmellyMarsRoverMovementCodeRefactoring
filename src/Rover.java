@@ -6,13 +6,11 @@ public class Rover {
     private final RotationConfiguration rotationLeft;
     private final RotationConfiguration rotationRight;
     private Vector vector;
-    private Point position;
     private Direction direction;
 
     public Rover(int x, int y, String directionRepresentation) {
+        vector = Vector.from(new Point(x,y), null);
         this.setDirection(directionRepresentation);
-        position = new Point(x, y);
-        vector = Vector.from(position, direction);
         rotationLeft = RotationConfiguration.left();
         rotationRight = RotationConfiguration.right();
     }
@@ -28,16 +26,7 @@ public class Rover {
             } else {
                 Command.DisplacementCommand commandAction = obtainDisplacement(command);
 
-//                vector = vector.displace(commandAction);
-                if (getDirection().equals(Direction.NORTH)) {
-                    position = position.displaceY(commandAction.displacement());
-                } else if (getDirection().equals(Direction.SOUTH)) {
-                    position = position.displaceY(-commandAction.displacement());
-                } else if (getDirection().equals(Direction.WEST)) {
-                    position = position.displaceX(-commandAction.displacement());
-                } else {
-                    position = position.displaceX(commandAction.displacement());
-                }
+                vector = vector.displace(commandAction);
             }
         }
     }
@@ -80,19 +69,19 @@ public class Rover {
     }
 
     public int getY() {
-        return position.y;
+        return this.vector.position.y;
     }
 
     public int getX() {
-        return position.x;
+        return this.vector.position.x;
     }
 
     public String getDirection() {
-        return direction.representation;
+        return vector.direction.representation;
     }
 
     public void setDirection(String representation) {
-        this.direction = Direction.from(representation);
+        this.vector.direction = Direction.from(representation);
     }
 
     private static class Direction {
@@ -165,8 +154,8 @@ public class Rover {
     }
 
     private static class Vector {
-        private final Point position;
-        private final Direction direction;
+        private Point position;
+        private Direction direction;
 
         public Vector(Point position, Direction direction) {
             this.position = position;
@@ -175,6 +164,26 @@ public class Rover {
 
         public static Vector from(Point position, Direction direction) {
             return new Vector(position, direction);
+        }
+
+        public Vector displace(Command.DisplacementCommand commandAction) {
+            if (getDirection().equals(Direction.NORTH)) {
+                return this.with(position.displaceY(commandAction.displacement()));
+            } else if (getDirection().equals(Direction.SOUTH)) {
+                return this.with(position.displaceY(-commandAction.displacement()));
+            } else if (getDirection().equals(Direction.WEST)) {
+                return this.with(position.displaceX(-commandAction.displacement()));
+            } else {
+                return this.with(position.displaceX(commandAction.displacement()));
+            }
+        }
+
+        private Vector with(Point position) {
+            return from(position, this.direction);
+        }
+
+        public String getDirection(){
+            return this.direction.representation;
         }
     }
 }
