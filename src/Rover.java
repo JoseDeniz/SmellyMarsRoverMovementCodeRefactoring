@@ -23,16 +23,7 @@ public class Rover {
                 actions.add(Direction.SOUTH, Direction.EAST);
                 actions.add(Direction.WEST, Direction.SOUTH);
                 actions.add(Direction.EAST, Direction.NORTH);
-                // Rotate Rover
-                if (direction.equals(Direction.NORTH)) {
-                    direction = actions.apply(Direction.NORTH);
-                } else if (direction.equals(Direction.SOUTH)) {
-                    direction = actions.apply(Direction.SOUTH);
-                } else if (direction.equals(Direction.WEST)) {
-                    direction = actions.apply(Direction.WEST);
-                } else {
-                    direction = actions.apply(Direction.EAST);
-                }
+                direction = actions.apply(direction);
             } else if (command.equals("r")) {
                 // Rotate Rover
                 if (direction.equals(Direction.NORTH)) {
