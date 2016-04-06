@@ -207,8 +207,10 @@ public class Rover {
                 return this.with(position.displaceY(-commandAction.displacement()));
             } else if (getDirection().equals(Direction.WEST)) {
                 return this.with(position.displaceX(-commandAction.displacement()));
-            } else {
+            } else if (getDirection().equals(Direction.EAST)){
                 return this.with(position.displaceX(commandAction.displacement()));
+            } else {
+                throw new RuntimeException("Defect: a direction not in the 4 cardinal points");
             }
         }
 
