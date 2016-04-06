@@ -8,7 +8,7 @@ public class Rover {
     private int x;
     private final RotationConfiguration rotationLeft;
     private final RotationConfiguration rotationRight;
-
+    private Command command;
     public Rover(int x, int y, String direction) {
         this.direction = direction;
         this.y = y;
@@ -21,9 +21,9 @@ public class Rover {
         for (int i = 0; i < commandsSequence.length(); ++i) {
             String command = commandsSequence.substring(i, i + 1);
 
-            if (isRotationLeft(command)) {
+            if (Command.from(command).isRotationLeft(command)) {
                 direction = rotationLeft.apply(direction);
-            } else if (isRotationRight(command)) {
+            } else if (Command.from(command).isRotationRight(command)) {
                 direction = rotationRight.apply(direction);
             } else {
                 int displacement1 = -1;
@@ -44,14 +44,6 @@ public class Rover {
                 }
             }
         }
-    }
-
-    private boolean isRotationRight(String command) {
-        return command.equals(Command.RIGHT);
-    }
-
-    private boolean isRotationLeft(String command) {
-        return command.equals(Command.LEFT);
     }
 
     @Override
