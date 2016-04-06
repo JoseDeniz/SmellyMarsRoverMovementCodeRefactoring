@@ -3,13 +3,13 @@ import java.util.Map;
 
 public class Rover {
 
-    private String direction;
+    private String directionRepresentation;
     private Point position;
     private final RotationConfiguration rotationLeft;
     private final RotationConfiguration rotationRight;
 
-    public Rover(int x, int y, String direction) {
-        this.setDirection(direction);
+    public Rover(int x, int y, String directionRepresentation) {
+        this.setDirection(directionRepresentation);
         position = new Point(x, y);
         rotationLeft = RotationConfiguration.left();
         rotationRight = RotationConfiguration.right();
@@ -85,11 +85,11 @@ public class Rover {
     }
 
     public String getDirection() {
-        return direction;
+        return directionRepresentation;
     }
 
     public void setDirection(String direction) {
-        this.direction = direction;
+        this.directionRepresentation = direction;
     }
 
     private class Direction {
