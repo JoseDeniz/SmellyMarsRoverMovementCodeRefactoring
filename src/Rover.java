@@ -8,7 +8,7 @@ public class Rover {
     private int x;
     private final RotationConfiguration rotationLeft;
     private final RotationConfiguration rotationRight;
-    
+
     public Rover(int x, int y, String direction) {
         this.direction = direction;
         this.y = y;
@@ -26,10 +26,12 @@ public class Rover {
             } else if (Command.from(command).isRotationRight()) {
                 direction = rotationRight.apply(direction);
             } else {
+                Command commandAction = Command.backward();
                 int displacement1 = -1;
 
                 if (command.equals(Command.FORWARD)) {
                     displacement1 = 1;
+                    commandAction = Command.forward();
                 }
                 int displacement = displacement1;
 

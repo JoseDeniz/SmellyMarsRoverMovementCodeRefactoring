@@ -20,4 +20,12 @@ public class Command {
 
         return new Command(representation);
     }
+
+    public static Command backward() {
+        return null;
+    }
+
+    public static Command forward() {
+        return null;
+    }
 }
