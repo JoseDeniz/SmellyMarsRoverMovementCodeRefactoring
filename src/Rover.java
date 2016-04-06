@@ -12,8 +12,8 @@ public class Rover {
 
     public Rover(int x, int y, String direction) {
         this.direction = direction;
-        this.y = y;
-        this.x = x;
+        this.setY(y);
+        this.setX(x);
         rotationLeft = RotationConfiguration.left();
         rotationRight = RotationConfiguration.right();
     }
@@ -37,13 +37,13 @@ public class Rover {
                 int displacement = displacement1;
 
                 if (direction.equals(Direction.NORTH)) {
-                    y += displacement;
+                    setY(getY() + displacement);
                 } else if (direction.equals(Direction.SOUTH)) {
-                    y -= displacement;
+                    setY(getY() - displacement);
                 } else if (direction.equals(Direction.WEST)) {
-                    x -= displacement;
+                    setX(getX() - displacement);
                 } else {
-                    x += displacement;
+                    setX(getX() + displacement);
                 }
             }
         }
@@ -68,13 +68,29 @@ public class Rover {
         } else if (!direction.equals(other.direction))
             return false;
 
-        if (x != other.x)
+        if (getX() != other.getX())
             return false;
 
-        if (y != other.y)
+        if (getY() != other.getY())
             return false;
 
         return true;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
     }
 
     private class Direction {
