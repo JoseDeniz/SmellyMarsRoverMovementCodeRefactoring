@@ -7,6 +7,7 @@ public class Rover {
     private Point position;
     private final RotationConfiguration rotationLeft;
     private final RotationConfiguration rotationRight;
+    private Direction direction;
 
     public Rover(int x, int y, String directionRepresentation) {
         this.setDirection(directionRepresentation);
@@ -85,18 +86,30 @@ public class Rover {
     }
 
     public String getDirection() {
+//        return direction.value;
         return directionRepresentation;
     }
 
-    public void setDirection(String direction) {
-        this.directionRepresentation = direction;
+    public void setDirection(String representation) {
+        this.direction = Direction.from(representation);
+        this.directionRepresentation = representation;
     }
 
-    private class Direction {
+    private static class Direction {
         private static final String NORTH = "N";
         private static final String SOUTH = "S";
         private static final String EAST = "E";
         private static final String WEST = "W";
+        private final String representation;
+
+        public Direction(String representation) {
+
+            this.representation = representation;
+        }
+
+        public static Direction from(String representation) {
+            return new Direction(representation);
+        }
     }
 
     private static class RotationConfiguration {
