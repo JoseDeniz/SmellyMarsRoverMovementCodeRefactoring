@@ -5,8 +5,6 @@ public class Rover {
 
     private String direction;
     private Point position;
-    private int y;
-    private int x;
     private final RotationConfiguration rotationLeft;
     private final RotationConfiguration rotationRight;
 
@@ -84,7 +82,6 @@ public class Rover {
 
     public void setY(int y) {
         position.y = y;
-        this.y = y;
     }
 
     public int getX() {
@@ -93,7 +90,6 @@ public class Rover {
 
     public void setX(int x) {
         position.x = x;
-        this.x = x;
     }
 
     private class Direction {
