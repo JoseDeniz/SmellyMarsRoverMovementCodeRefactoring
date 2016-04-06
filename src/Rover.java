@@ -38,7 +38,7 @@ public class Rover {
                 } else if (direction.equals(Direction.SOUTH)) {
                     position = position.displaceY(-displacement);
                 } else if (direction.equals(Direction.WEST)) {
-                    setX(getX() - displacement);
+                    position = position.displaceX(-displacement);
                 } else {
                     setX(getX() + displacement);
                 }
@@ -142,6 +142,10 @@ public class Rover {
 
         public Point displaceY(int displacement) {
             return new Point(x, y + displacement);
+        }
+
+        public Point displaceX(int displacement) {
+            return new Point(x + displacement, y);
         }
     }
 }
