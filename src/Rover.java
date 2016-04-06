@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class Rover {
 
     private String direction;
@@ -15,24 +18,26 @@ public class Rover {
             String command = commandsSequence.substring(i, i + 1);
 
             if (command.equals("l")) {
+                Actions actions = new Actions();
+                actions.add(Direction.NORTH, Direction.WEST);
                 // Rotate Rover
-                if (direction.equals("N")) {
-                    direction = "W";
+                if (direction.equals(Direction.NORTH)) {
+                    direction = Direction.WEST;
                 } else if (direction.equals("S")) {
                     direction = "E";
                 } else if (direction.equals("W")) {
                     direction = "S";
                 } else {
-                    direction = "N";
+                    direction = Direction.NORTH;
                 }
             } else if (command.equals("r")) {
                 // Rotate Rover
-                if (direction.equals("N")) {
+                if (direction.equals(Direction.NORTH)) {
                     direction = "E";
                 } else if (direction.equals("S")) {
                     direction = "W";
                 } else if (direction.equals("W")) {
-                    direction = "N";
+                    direction = Direction.NORTH;
                 } else {
                     direction = "S";
                 }
@@ -44,7 +49,7 @@ public class Rover {
                 }
                 int displacement = displacement1;
 
-                if (direction.equals("N")) {
+                if (direction.equals(Direction.NORTH)) {
                     y += displacement;
                 } else if (direction.equals("S")) {
                     y -= displacement;
@@ -83,5 +88,22 @@ public class Rover {
             return false;
 
         return true;
+    }
+
+    private class Direction {
+        private static final String NORTH = "N";
+        private static final String WEST = "W";
+    }
+
+    private class Actions {
+        private Map<String, String> values;
+
+        public Actions() {
+            values = new HashMap<>();
+        }
+
+        public void add(String from, String to) {
+            this.values.put(from, to);
+        }
     }
 }
