@@ -4,6 +4,7 @@ import java.util.Map;
 public class Rover {
 
     private String direction;
+    private Point position;
     private int y;
     private int x;
     private final RotationConfiguration rotationLeft;
@@ -115,5 +116,8 @@ public class Rover {
             result.add(Direction.EAST, Direction.SOUTH);
             return result;
         }
+    }
+
+    private class Point {
     }
 }
