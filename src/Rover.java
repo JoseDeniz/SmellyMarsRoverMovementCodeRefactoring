@@ -80,16 +80,8 @@ public class Rover {
         return position.y;
     }
 
-    public void setY(int y) {
-        position.y = y;
-    }
-
     public int getX() {
         return position.x;
-    }
-
-    public void setX(int x) {
-        position.x = x;
     }
 
     private class Direction {
