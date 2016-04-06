@@ -11,8 +11,6 @@ public class Rover {
     public Rover(int x, int y, String direction) {
         this.direction = direction;
         position = new Point(x, y);
-        this.setY(y);
-        this.setX(x);
         rotationLeft = RotationConfiguration.left();
         rotationRight = RotationConfiguration.right();
     }
