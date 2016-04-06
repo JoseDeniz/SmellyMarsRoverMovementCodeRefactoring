@@ -3,9 +3,9 @@ import java.util.Map;
 
 public class Rover {
 
-    private Point position;
     private final RotationConfiguration rotationLeft;
     private final RotationConfiguration rotationRight;
+    private Point position;
     private Direction direction;
 
     public Rover(int x, int y, String directionRepresentation) {
