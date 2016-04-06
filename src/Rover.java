@@ -6,7 +6,6 @@ public class Rover {
     private final RotationConfiguration rotationLeft;
     private final RotationConfiguration rotationRight;
     private Vector vector;
-    private Direction direction;
 
     public Rover(int x, int y, String directionRepresentation) {
         vector = Vector.from(new Point(x,y), null);
