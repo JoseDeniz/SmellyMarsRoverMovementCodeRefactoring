@@ -21,9 +21,9 @@ public class Rover {
         for (int i = 0; i < commandsSequence.length(); ++i) {
             String command = commandsSequence.substring(i, i + 1);
 
-            if (Command.from(command).isRotationLeft(command)) {
+            if (Command.from(command).isRotationLeft()) {
                 direction = rotationLeft.apply(direction);
-            } else if (Command.from(command).isRotationRight(command)) {
+            } else if (Command.from(command).isRotationRight()) {
                 direction = rotationRight.apply(direction);
             } else {
                 int displacement1 = -1;

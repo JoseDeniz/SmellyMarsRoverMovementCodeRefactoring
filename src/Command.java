@@ -8,11 +8,11 @@ public class Command {
         this.representation = representation;
     }
 
-    boolean isRotationRight(String command) {
+    boolean isRotationRight() {
         return representation.equals(RIGHT);
     }
 
-    boolean isRotationLeft(String command) {
+    boolean isRotationLeft() {
         return representation.equals(LEFT);
     }
 
