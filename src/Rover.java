@@ -37,27 +37,23 @@ public class Rover {
                     direction = "S";
                 }
             } else {
-                displaceRover(command);
+                int displacement1 = -1;
+
+                if (command.equals("f")) {
+                    displacement1 = 1;
+                }
+                int displacement = displacement1;
+
+                if (direction.equals("N")) {
+                    y += displacement;
+                } else if (direction.equals("S")) {
+                    y -= displacement;
+                } else if (direction.equals("W")) {
+                    x -= displacement;
+                } else {
+                    x += displacement;
+                }
             }
-        }
-    }
-
-    private void displaceRover(String command) {
-        int displacement1 = -1;
-
-        if (command.equals("f")) {
-            displacement1 = 1;
-        }
-        int displacement = displacement1;
-
-        if (direction.equals("N")) {
-            y += displacement;
-        } else if (direction.equals("S")) {
-            y -= displacement;
-        } else if (direction.equals("W")) {
-            x -= displacement;
-        } else {
-            x += displacement;
         }
     }
 
