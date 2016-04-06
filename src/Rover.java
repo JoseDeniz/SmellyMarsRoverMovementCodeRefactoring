@@ -86,13 +86,11 @@ public class Rover {
     }
 
     public String getDirection() {
-//        return direction.value;
-        return directionRepresentation;
+        return direction.representation;
     }
 
     public void setDirection(String representation) {
         this.direction = Direction.from(representation);
-        this.directionRepresentation = representation;
     }
 
     private static class Direction {
