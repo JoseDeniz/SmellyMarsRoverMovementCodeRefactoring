@@ -98,6 +98,22 @@ public class Rover {
         public static Direction from(String representation) {
             return new Direction(representation);
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            Direction direction = (Direction) o;
+
+            return representation != null ? representation.equals(direction.representation) : direction.representation == null;
+
+        }
+
+        @Override
+        public int hashCode() {
+            return representation != null ? representation.hashCode() : 0;
+        }
     }
 
     private static class RotationConfiguration {
@@ -150,6 +166,25 @@ public class Rover {
         public Point displaceX(int displacement) {
             return new Point(x + displacement, y);
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            Point point = (Point) o;
+
+            if (x != point.x) return false;
+            return y == point.y;
+
+        }
+
+        @Override
+        public int hashCode() {
+            int result = x;
+            result = 31 * result + y;
+            return result;
+        }
     }
 
     private static class Vector {
@@ -183,6 +218,25 @@ public class Rover {
 
         public String getDirection(){
             return this.direction.representation;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            Vector vector = (Vector) o;
+
+            if (position != null ? !position.equals(vector.position) : vector.position != null) return false;
+            return direction != null ? direction.equals(vector.direction) : vector.direction == null;
+
+        }
+
+        @Override
+        public int hashCode() {
+            int result = position != null ? position.hashCode() : 0;
+            result = 31 * result + (direction != null ? direction.hashCode() : 0);
+            return result;
         }
     }
 }
