@@ -85,7 +85,7 @@ public class Rover {
     }
 
     private static class Direction {
-        private static final String NORTH_VALUE = "N";
+        private static final String NORTH = "N";
         private static final String SOUTH = "S";
         private static final String EAST = "E";
         private static final String WEST = "W";
@@ -101,7 +101,7 @@ public class Rover {
         }
 
         public static final Direction north(){
-            return from(NORTH_VALUE);
+            return from(NORTH);
         }
         @Override
         public boolean equals(Object o) {
@@ -137,18 +137,18 @@ public class Rover {
 
         public static RotationConfiguration left() {
             RotationConfiguration result = new RotationConfiguration();
-            result.add(Direction.NORTH_VALUE, Direction.WEST);
+            result.add(Direction.NORTH, Direction.WEST);
             result.add(Direction.SOUTH, Direction.EAST);
             result.add(Direction.WEST, Direction.SOUTH);
-            result.add(Direction.EAST, Direction.NORTH_VALUE);
+            result.add(Direction.EAST, Direction.NORTH);
             return result;
         }
 
         public static RotationConfiguration right() {
             RotationConfiguration result = new RotationConfiguration();
-            result.add(Direction.NORTH_VALUE, Direction.EAST);
+            result.add(Direction.NORTH, Direction.EAST);
             result.add(Direction.SOUTH, Direction.WEST);
-            result.add(Direction.WEST, Direction.NORTH_VALUE);
+            result.add(Direction.WEST, Direction.NORTH);
             result.add(Direction.EAST, Direction.SOUTH);
             return result;
         }
@@ -207,7 +207,7 @@ public class Rover {
         public Vector displace(Command.DisplacementCommand commandAction) {
             if (getDirectionType().equals(Direction.north())) {
                 return this.with(position.displaceY(commandAction.displacement()));
-            } else if (getDirection().equals(Direction.NORTH_VALUE)) {
+            } else if (getDirection().equals(Direction.NORTH)) {
                 throw new RuntimeException("Defect, querying old North");
             } else if (getDirection().equals(Direction.SOUTH)) {
                 return this.with(position.displaceY(-commandAction.displacement()));
@@ -219,7 +219,7 @@ public class Rover {
                 throw new RuntimeException("Defect: a direction not in the 4 cardinal points");
             }
         }
-        
+
         private Vector with(Point position) {
             return from(position, this.direction);
         }
